@@ -1,0 +1,13 @@
+int main(void){   //this is a fun
+  int _a[1];
+  float b;
+  if ( _a < 1 ) b= _a + 2;
+  else b = _a - 2;
+  if( b >= 1 ) b = b / _a;
+  else b = b * 2;
+  do {
+    _a = _a % 1;
+  } 
+  while ( _a != b );
+  return 0;
+}

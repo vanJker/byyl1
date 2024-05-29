@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>735</width>
-    <height>598</height>
+    <width>1160</width>
+    <height>702</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -104,8 +104,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>681</width>
-               <height>344</height>
+               <width>1108</width>
+               <height>440</height>
               </rect>
              </property>
              <property name="minimumSize">
@@ -134,8 +134,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>681</width>
-               <height>344</height>
+               <width>1108</width>
+               <height>440</height>
               </rect>
              </property>
             </widget>
@@ -158,8 +158,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>681</width>
-               <height>344</height>
+               <width>1108</width>
+               <height>440</height>
               </rect>
              </property>
             </widget>
@@ -169,12 +169,12 @@
         </widget>
         <widget class="QWidget" name="total_tab">
          <attribute name="title">
-          <string>DFA汇总</string>
+          <string>总的DFA</string>
          </attribute>
         </widget>
         <widget class="QWidget" name="program_tab">
          <attribute name="title">
-          <string>词法分析程序</string>
+          <string>词法分析器</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="0" column="0">
@@ -203,8 +203,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>735</width>
-     <height>26</height>
+     <width>1160</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>

@@ -32,19 +32,34 @@ void Regex::initRegularExpresions(string data)
     { // 遍历temp进行成员的初始化
         if (temp[i].length() < 1)
             continue; // 空
-        //        if (temp[i].length() > 2 && temp[i][0] == '/' && temp[i][1] ==
-        //        '/') { //发现新的文法类型
-        //            string strtype = "";
-        //            for (unsigned int j = 2; j < temp[i].length(); j++) {
-        //            //j=2开始说明要越过"//"读取新文法类型名
-        //                if (temp[i][j] != '\n')
-        //                    strtype += temp[i][j];
-        //            }
-        //            //为新的文法类型在languageType中添加一个vector<int>用于存入当前非新文法类型名（单条正则表达式）的相对行下标
-        //            current_type = strtype;
-        //            vector<int> tempV;
-        //            languageType[current_type] = tempV;
-        //        }
+//        if (temp[i].length() > 2 && temp[i][0] == '/' && temp[i][1] == '/')
+//        { // 发现新的文法类型
+//            string strtype = "";
+//            for (unsigned int j = 2; j < temp[i].length(); j++)
+//            {
+//                // j=2开始说明要越过"//"读取新文法类型名
+//                if (temp[i][j] != '\n')
+//                    strtype += temp[i][j];
+//            }
+//            // 为新的文法类型在languageType中添加一个vector<int>用于存入当前非新文法类型名（单条正则表达式）的相对行下标
+//            current_type = strtype;
+//            vector<int> tempV;
+//            languageType[current_type] = tempV;
+//        }
+        if (temp[i].length() > 1 && temp[i][0] == '#')
+        { // 发现新的文法类型
+            string strtype = "";
+            for (unsigned int j = 1; j < temp[i].length(); j++)
+            {
+                // j=1开始说明要越过"#"读取新文法类型名
+                if (temp[i][j] != '\n')
+                    strtype += temp[i][j];
+            }
+            // 为新的文法类型在languageType中添加一个vector<int>用于存入当前非新文法类型名（单条正则表达式）的相对行下标
+            current_type = strtype;
+            vector<int> tempV;
+            languageType[current_type] = tempV;
+        }
         else
         { // 单条正则表达式的读入
             regexps.push_back(temp[i]);
@@ -148,31 +163,31 @@ void Regex::identifyRegularExp(string exp, int index)
         else if (!is_left)
         { // 右部
             if (exp[i] == '\\')
-            { // 出现'\'说明是转义字符，此时跳过符号'/'并记录下一个字符
-                //                while (i + 1 < exp.length() &&
-                //                !isRegualrOperator(exp[i + 1]))
-                //                    if (exp[i + 1] == '\\')
-                //                        tempStr += exp[++i];
+            {   // 出现'\'说明是转义字符，此时跳过符号'/'并记录下一个字符
+                //                                while (i + 1 < exp.length() &&
+                //                                !isRegualrOperator(exp[i + 1]))
+                //                                    if (exp[i + 1] == '\\')
+                //                                        tempStr += exp[++i];
                 tempStr += exp[++i];
                 insertExpGroup(tempStr, expUnitGroup[index][0].name, index, is_left);
             }
-            //            if (exp[i] == '\\') { //正则右部出现'\'说明是转义字符
-            //                i++;
-            //                tempStr += exp[i];
-            //                if (exp[i] == '\\') {
-            //                    i++;
-            //                    tempStr += exp[i];
-            //                }
-            //                /*while (i + 1 < exp.length() &&
-            //                !isRegualrOperator(exp[i + 1])) {
-            //                    if (exp[i + 1] == '\\') {
-            //                        i++;
-            //                    }
-            //                    tempStr += exp[++i];
-            //                }*/
-            //                insertExpGroup(tempStr, expUnitGroup[index][0].name,
-            //                index, is_left);
-            //            }
+            //                        if (exp[i] == '\\') { //正则右部出现'\'说明是转义字符
+            //                            i++;
+            //                            tempStr += exp[i];
+            //                            if (exp[i] == '\\') {
+            //                                i++;
+            //                                tempStr += exp[i];
+            //                            }
+            //                            /*while (i + 1 < exp.length() &&
+            //                            !isRegualrOperator(exp[i + 1])) {
+            //                                if (exp[i + 1] == '\\') {
+            //                                    i++;
+            //                                }
+            //                                tempStr += exp[++i];
+            //                            }*/
+            //                            insertExpGroup(tempStr, expUnitGroup[index][0].name,
+            //                            index, is_left);
+            //                        }
             else if (exp[i] == '[')
             { // 把整个字符串当成一个整体接收,[]里的内容相当于一个字符
                 tempStr += exp[i];
